@@ -61,14 +61,14 @@ class Animator{
   	for(let pipe of pipes){
   		sky.sky.removeChild(pipe.pipe);	
   	}	
-    this.board.innerHTML='<h1>Press Enter To Restart</h1>';
+    this.board.innerHTML='<h1>Game Over</h1>';
   	
   }
 
   checkKeyDown(e){
   	if(e.keyCode=='13'){
-  	  this.animate();
-  	  alert('pressed');
+  	  //this.animate();
+  	  //alert('pressed');
   	}  	
   }
 }

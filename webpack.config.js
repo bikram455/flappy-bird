@@ -12,6 +12,11 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   devtool: 'cheap-module-eval-source-map',
+  module: {
+    rules: [
+      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+    ]
+  },
   devServer: {
     hot: true,
     port: 8181,
