@@ -24,6 +24,9 @@ class Bird{
   	if(this.y<583){
   	  this.y +=2;	
   	}  	
+    if(this.x<250){
+      this.x +=2;
+    }
   	this.bird.style.top=this.y;
   	this.bird.style.left=this.x;
   	document.onkeydown=this.checkKeyDown;
@@ -31,9 +34,16 @@ class Bird{
 
   checkKeyDown(e){
   	if(this.y>20 && this.dead==0 && e.keyCode=='38'){
-  	  this.y -=30;		
+  	  this.y -=10;		
   	}  	
   	this.bird.style.top=this.y;
+  }
+
+  restart(bird,x,y){
+    
+    bird.style.left=0;
+    bird.style.top=0;
+    
   }
 
 }

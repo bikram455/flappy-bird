@@ -2,14 +2,14 @@ class Sky{
 
   constructor(){
   	this.height=633;
-  	this.width=1520;
+  	this.width=100;
   	this.background='url("./images/background.png")';
   	this.position='relative';
 
   	this.sky=document.createElement('div');
   	this.sky.id='sky';
   	this.sky.style.height=this.height;
-  	this.sky.style.width=this.width;
+  	this.sky.style.width=this.width+'%';
   	this.sky.style.position=this.position;
   	this.sky.style.background=this.background;
   	this.sky.style.backgroundSize='contain';

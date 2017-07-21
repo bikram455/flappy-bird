@@ -4,7 +4,7 @@ class Pipes{
   	this.y=y;
   	this.width=200;
   	this.position='absolute';
-  	this.height=(Math.random()*3)*50+50;
+  	this.height=(Math.random()*6)*50;
   	this.background='url("./images/pipe.png")';
   	if(y==1){
   	  this.y=633-this.height;	
@@ -26,7 +26,7 @@ class Pipes{
   	  this.x=1450;
   	  ++bird.score;
   	  if(this.y!=0){
-  		this.height=(Math.random()*3)*50+50;
+  		this.height=(Math.random()*5)*50;
   	    this.y=633-this.height;	
   	    this.pipe.style.left=this.x;
   	    this.pipe.style.height=this.height;
@@ -40,6 +40,19 @@ class Pipes{
   	if(((bird.x>=this.x && bird.x<=this.x+this.width) || (bird.x<=this.x && this.x<=bird.x+bird.width)) && ( (bird.y>=this.y && bird.y<=this.y+this.height) ||(bird.y<=this.y && bird.y+bird.height>=this.y) ) ){
   	  bird.dead=1;
   	}
+  }
+
+  restart(pipe,x,y,){
+    height=(Math.random()*5)*50;
+    if(y!=0){
+      y=633-height; 
+    }
+
+    pipe.style.left=x;
+    pipe.style.top=y;
+    pipe.style.height=height;
+    pipe.style.position=position;
+
   }
 
 }

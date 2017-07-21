@@ -6,17 +6,24 @@ import Pipes from './Pipes';
 class Animator{
   constructor(){
   	this.interval;  	
+    this.startval=1;
   	this.checkKeyDown=this.checkKeyDown.bind(this);	
-  	this.animate(); 	
-  
+  	this.startGame();   
+  }
+
+  startGame(){
+    this.board=document.getElementById('game');
+    this.board.innerHTML="<br><br><h1>FLAPPY BIRD</h1><br><br><br><h1>Press Enter to Start!!!!</h1><h2>Press up arrow key keep the bird mid-air.</h2>";
+    document.onkeydown=this.checkKeyDown;
   }
 
   animate(){
-
+    let game=document.getElementById('game');
+    let sky=new Sky();
+    game.appendChild(sky.sky);
   	let pipes=[];
-  	let game=document.getElementById('game');
+
   	let panel=new Panel();
-  	let sky=new Sky();
   	let bird=new Bird();
   	let pipe1=new Pipes(600,0);  	
   	let pipe2=new Pipes(600,1);  	
@@ -26,7 +33,7 @@ class Animator{
   	let pipe6=new Pipes(1400,1);  	
 
   	game.appendChild(panel.panel);  	
-  	game.appendChild(sky.sky);
+  	
   	sky.append(bird.bird);
   	sky.append(pipe1.pipe);
   	sky.append(pipe2.pipe);
@@ -40,7 +47,7 @@ class Animator{
   	
   	if(bird.dead==0){
   	  this.interval=setInterval(()=>{
-  	  	this.board.innerHTML="<h1>Score:"+bird.score+"</h1>";
+  	  	this.board.innerHTML="<h2>Score:"+bird.score+"</h2>";
   	  	bird.move();
   	  	for(let pipe of pipes){
   	  	  pipe.move(bird);
@@ -55,21 +62,23 @@ class Animator{
 
   stop(sky,bird,pipes){
   	clearInterval(this.interval);
-  	this.board=document.getElementById('sky');
+  	this.board=document.getElementById('sky');    
+    this.board.innerHTML='<h1>Game Over</h1><h1>Press Enter</h1> ';
   	document.onkeydown=this.checkKeyDown;
-  	sky.sky.removeChild(bird.bird);  
-  	for(let pipe of pipes){
-  		sky.sky.removeChild(pipe.pipe);	
-  	}	
-    this.board.innerHTML='<h1>Game Over</h1>';
-  	
   }
 
   checkKeyDown(e){
-  	if(e.keyCode=='13'){
-  	  //this.animate();
-  	  //alert('pressed');
-  	}  	
+  	if(e.keyCode=='13' && this.startval==1){
+  	  this.board=document.getElementById('game');
+      this.board.innerHTML="";
+      this.animate();
+      startval=0;
+  	}
+    if(e.keyCode=='13' && this.startval==0){
+      this.startGame();
+    
+    }  	
+
   }
 }
 

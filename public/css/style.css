@@ -1,3 +1,8 @@
 body {
-  background: #f3f3f3
+  background: url('../images/background.png') ;
+  background-size: contain;
+  text-align: center; 
+}
+h1{
+	font-size: 70px;
 }
